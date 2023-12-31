@@ -1,11 +1,17 @@
-import express from "express";
+import { Router } from "express";
 import tasksRouter from "./tasks.js";
 import userRouter from "./user.js";
+import config from "../config.js";
 
-const router = express.Router();
+const router = Router();
 
-router.get("/tasks", tasksRouter);
-router.get("/user", userRouter);
+
+router.use("/tasks", tasksRouter);
+router.use("/user", userRouter);
+
+router.get("/", (req, res) => {
+    res.json({ message: `Server is running on port ${config.serverPort}` });
+});
 
 export default router;
 

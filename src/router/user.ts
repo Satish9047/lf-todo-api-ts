@@ -1,8 +1,8 @@
-import express, { Router, Request, Response } from "express";
-const userRouter: Router = express.Router();
+import { Router} from "express";
+import { userController } from "../controller/user.js";
+const userRouter: Router = Router();
 
-userRouter.get("/user", (req: Request, res: Response) => {
-    res.send("you get the user");
-});
+
+userRouter.get("/user", userController);
 
 export default userRouter;

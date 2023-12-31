@@ -1,11 +1,7 @@
-export interface IUserArray {
-    id: number;
-    name: string;
-    email: string;
-    password: string;
-}
-
-const userArray: IUserArray[] = [
+// // service/user.ts
+// import fs from "fs";
+// import { IUserArray } from "../data/user.js";
+const userArray = [
     {
         id: 1,
         name: "User 1",
@@ -19,5 +15,7 @@ const userArray: IUserArray[] = [
         password: "admin12345"
     }
 ];
-
-export default userArray;
+export const getAllUser = () => {
+    return userArray;
+};
+//# sourceMappingURL=user.js.map
