@@ -1,6 +1,7 @@
 
 import fs from "fs";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 import { IloginCredential } from "../service/user";
 import { IregisterCredential } from "../service/user";
 import { usersArray } from "../data/user";
@@ -8,6 +9,8 @@ import { IUsersArray } from "../interface/user";
 
 const saltRounds = 10;
 const usersArrayFilePath = "./src/data/user.ts";
+const jwtSecret = "jwtsecret";
+
 
 
 const writeUsersToFile = (updatedUsers: IUsersArray[]) => {
@@ -64,7 +67,8 @@ export const getLogin = async (credential: IloginCredential) => {
 
     // Check if user exists and verify the hashed password
     if (user && (await bcrypt.compare(credential.password, user.password))) {
-        return { success: true, message: "Login successful" };
+        const jwtToken = jwt.sign({ data: user.email }, jwtSecret, { expiresIn: "2min" });
+        return { success: true, message: "Login successful", token: jwtToken };
     } else {
         return { success: false, message: "Login unsuccessful" };
     }
