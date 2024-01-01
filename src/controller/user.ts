@@ -8,3 +8,8 @@ export const getAllUsers = (req: Request, res: Response) => {
     return res.json(data);
 };
 
+export const getLogin = (req: Request, res: Response) => {
+    const data = userService.getLogin(req.body);
+    return res.json(data);
+};
+

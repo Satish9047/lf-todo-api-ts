@@ -5,3 +5,8 @@ export const getAllUser = () => {
     return data;
 };
 
+export const getLogin = () => {
+    const data = User.getLogin();
+    return data;
+};
+

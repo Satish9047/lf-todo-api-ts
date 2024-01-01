@@ -30,3 +30,11 @@ export const getAllUsers = () =>{
     });
     return userData;
 };
+
+export const getLogin = (credential:any)=>{
+    if(!credential) return "Empty credentials";
+    const user = users.find((user)=>{
+        return user.email === credential.email && user.password === credential.password;
+    });
+    if(!user) return "Invalid credentials";
+};
