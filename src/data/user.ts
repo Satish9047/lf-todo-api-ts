@@ -22,5 +22,11 @@ export const usersArray = [
         "name": "satish123",
         "email": "satish123@gmail.com",
         "password": "$2b$10$1183cx4i7363t67QhSFCK.MXDnbNjmsgNJlkzHrfFb4ptU8..Scu6"
+    },
+    {
+        "id": 5,
+        "name": "satish1234",
+        "email": "satish1234@gmail.com",
+        "password": "$2b$10$kGrmLTP.cdmnT2WXN.3XzuIPf2gfSbajQ2DQJhZczRc8GyJ03kgZO"
     }
 ];

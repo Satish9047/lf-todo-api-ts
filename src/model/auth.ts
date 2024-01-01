@@ -61,7 +61,7 @@ export const getLogin = async (credential: IloginCredential) => {
     }
 };
 
-export const getRefreshToken = (accessToken: string) => {
+export const getRefreshToken = async (accessToken: string) => {
 
     const token = accessToken?.split(" ")?.[1];
     if (token) {

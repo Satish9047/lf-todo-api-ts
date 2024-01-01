@@ -1,11 +1,5 @@
 export const tasksArray = [
     {
-        "id": "1",
-        "title": "Task 1",
-        "description": "This is a task 1",
-        "isCompleted": true
-    },
-    {
         "id": "2",
         "title": "Task 2",
         "description": "This is a task 2",
@@ -21,6 +15,12 @@ export const tasksArray = [
         "id": "lqusr0ma_hn",
         "title": "Task 4",
         "description": "This is a task 4",
+        "isCompleted": false
+    },
+    {
+        "id": "lqv4px1q_8w",
+        "title": "Task 6",
+        "description": "This is a task 6",
         "isCompleted": false
     }
 ];
