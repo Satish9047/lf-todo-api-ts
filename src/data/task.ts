@@ -15,7 +15,7 @@ export const tasksArray = [
         "id": "lqusqbpg_5l",
         "title": "Task 3",
         "description": "This is a task 3",
-        "isCompleted": false
+        "isCompleted": true
     },
     {
         "id": "lqusr0ma_hn",

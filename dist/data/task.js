@@ -12,24 +12,18 @@ exports.tasksArray = [
         "id": "2",
         "title": "Task 2",
         "description": "This is a task 2",
-        "isCompleted": false
+        "isCompleted": true
     },
     {
         "id": "lqusqbpg_5l",
         "title": "Task 3",
         "description": "This is a task 3",
-        "isCompleted": false
+        "isCompleted": true
     },
     {
         "id": "lqusr0ma_hn",
         "title": "Task 4",
         "description": "This is a task 4",
-        "isCompleted": false
-    },
-    {
-        "id": "lqutz33u_qm",
-        "title": "Task 5",
-        "description": "This is a task 5",
         "isCompleted": false
     }
 ];

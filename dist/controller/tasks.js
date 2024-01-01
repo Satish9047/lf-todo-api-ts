@@ -23,32 +23,63 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteTask = exports.updateTask = exports.createTask = exports.getTaskById = exports.getAllTasks = void 0;
+exports.deleteTask = exports.updateTask = exports.createTask = exports.completedTask = exports.getTaskById = exports.getAllTasks = void 0;
 const taskService = __importStar(require("../service/task"));
-const getAllTasks = (req, res) => {
-    const data = taskService.getAllTask();
+//get all tasks
+const getAllTasks = async (req, res) => {
+    const data = await taskService.getAllTask();
     return res.json(data);
 };
 exports.getAllTasks = getAllTasks;
-const getTaskById = (req, res) => {
-    //const taskId: number = parseInt(req.params.id, 10);
-    const data = taskService.getTaskById(req.params.id);
-    return res.json(data);
+//get task by id
+const getTaskById = async (req, res) => {
+    const data = await taskService.getTaskById(req.params.id);
+    if (!data) {
+        return res.status(404).json({ message: "Task not found ...." });
+    }
+    return res.status(200).json(data);
 };
 exports.getTaskById = getTaskById;
+//get completed tasks
+const completedTask = async (req, res) => {
+    const data = await taskService.completedTask();
+    if (!data) {
+        return res.status(404).json({ message: "Completed Task not found" });
+    }
+    return res.status(200).json(data);
+};
+exports.completedTask = completedTask;
+//create task
 const createTask = async (req, res) => {
     const data = await taskService.createTask(req.body);
-    return res.json(data);
+    if (data.success) {
+        return res.status(201).json(data);
+    }
+    else {
+        return res.status(400).json(data);
+    }
 };
 exports.createTask = createTask;
+//update task
 const updateTask = async (req, res) => {
     const data = await taskService.updateTask(req.params.id);
-    return res.json(data);
+    if (data.success) {
+        return res.status(200).json(data);
+    }
+    else {
+        return res.status(400).json(data);
+    }
 };
 exports.updateTask = updateTask;
+//delete task
 const deleteTask = async (req, res) => {
     const data = await taskService.deleteTask(req.params.id);
-    return res.json(data);
+    if (data.success) {
+        return res.status(201).json(data);
+    }
+    else {
+        return res.status(400).json(data);
+    }
 };
 exports.deleteTask = deleteTask;
 //# sourceMappingURL=tasks.js.map

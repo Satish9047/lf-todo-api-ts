@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteTask = exports.updateTask = exports.createTask = exports.getTaskById = exports.getAllTask = void 0;
+exports.deleteTask = exports.updateTask = exports.createTask = exports.getCompletedTask = exports.getTaskById = exports.getAllTask = void 0;
 const fs_1 = __importDefault(require("fs"));
 const task_1 = require("../data/task");
 const taskArrayFilePath = "./src/data/task.ts";
@@ -37,6 +37,14 @@ const getTaskById = (taskId) => {
     return task;
 };
 exports.getTaskById = getTaskById;
+//get completed task 
+const getCompletedTask = () => {
+    const tasks = task_1.tasksArray.filter((task) => {
+        return task.isCompleted === true;
+    });
+    return tasks;
+};
+exports.getCompletedTask = getCompletedTask;
 //create new task
 const createTask = (newTask) => {
     const newTaskObj = {

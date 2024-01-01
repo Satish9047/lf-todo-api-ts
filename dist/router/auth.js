@@ -23,36 +23,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteTask = exports.updateTask = exports.createTask = exports.completedTask = exports.getTaskById = exports.getAllTask = void 0;
-const Task = __importStar(require("../model/task"));
-const getAllTask = async () => {
-    const data = Task.getAllTask();
-    return data;
-};
-exports.getAllTask = getAllTask;
-const getTaskById = async (taskId) => {
-    const data = Task.getTaskById(taskId);
-    return data;
-};
-exports.getTaskById = getTaskById;
-const completedTask = async () => {
-    const data = Task.getCompletedTask();
-    return data;
-};
-exports.completedTask = completedTask;
-const createTask = async (newTask) => {
-    const data = Task.createTask(newTask);
-    return data;
-};
-exports.createTask = createTask;
-const updateTask = async (taskId) => {
-    const data = Task.updateTask(taskId);
-    return data;
-};
-exports.updateTask = updateTask;
-const deleteTask = async (taskId) => {
-    const data = Task.deleteTask(taskId);
-    return data;
-};
-exports.deleteTask = deleteTask;
-//# sourceMappingURL=task.js.map
+const express_1 = require("express");
+const authRouter = (0, express_1.Router)();
+const authController = __importStar(require("../controller/auth"));
+// userRouter.get("/", userController.getAllUsers);
+// userRouter.post("/login", userController.getLogin);
+// userRouter.post("/register", userController.getRegister);
+authRouter.post("/refresh", authController.getRefreshToken);
+exports.default = authRouter;
+//# sourceMappingURL=auth.js.map

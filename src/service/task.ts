@@ -16,6 +16,11 @@ export const getTaskById = async (taskId: string) => {
     return data;
 };
 
+export const completedTask = async () => {
+    const data = Task.getCompletedTask();
+    return data;
+};
+
 export const createTask = async (newTask: INewTask) => {
     const data = Task.createTask(newTask);
     return data;

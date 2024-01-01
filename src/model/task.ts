@@ -36,6 +36,13 @@ export const getTaskById = (taskId: string) => {
     return task;
 };
 
+//get completed task 
+export const getCompletedTask = () => {
+    const tasks = tasksArray.filter((task) => {
+        return task.isCompleted === true;
+    });
+    return tasks;
+};
 
 //create new task
 export const createTask = (newTask: INewTask) => {
