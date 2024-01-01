@@ -1,17 +1,21 @@
-import express from "express";
-import "dotenv/config";
-import router from "./router/index.js";
-import cors from "cors";
-const app = express();
-const port = 3000;
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const router_1 = __importDefault(require("./router"));
+const cors_1 = __importDefault(require("cors"));
+const config_1 = __importDefault(require("./config"));
+const app = (0, express_1.default)();
 //middleware
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use((0, cors_1.default)());
+app.use(express_1.default.json());
+app.use(express_1.default.urlencoded({ extended: true }));
 //route handlers
-app.use("/", router);
+app.use("/", router_1.default);
 //listner
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+app.listen(config_1.default.serverPort, () => {
+    console.log(`Server running on port ${config_1.default.serverPort} ....`);
 });
 //# sourceMappingURL=index.js.map

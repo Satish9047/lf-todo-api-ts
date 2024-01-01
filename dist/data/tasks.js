@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const taskArray = [
     {
         id: 1,
@@ -12,5 +14,5 @@ const taskArray = [
         isCompleted: false
     }
 ];
-export default taskArray;
+exports.default = taskArray;
 //# sourceMappingURL=tasks.js.map

@@ -1,11 +1,11 @@
 import express from "express";
-import tasksRouter from "./tasks.js";
-import userRouter from "./user.js";
+import tasksRouter from "./tasks";
+import userRouter from "./user";
 
 const router = express.Router();
 
-router.get("/tasks", tasksRouter);
-router.get("/user", userRouter);
+router.use("/tasks", tasksRouter);
+router.use("/users", userRouter);
 
 export default router;
 
