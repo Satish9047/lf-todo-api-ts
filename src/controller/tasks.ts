@@ -1,19 +1,42 @@
 import { Request, Response } from "express";
 import * as taskService from "../service/task";
 
-export const getAllTasks = (req: Request, res: Response) => {
-    const data = taskService.getAllTask();
+export const getAllTasks = async (req: Request, res: Response) => {
+    const data = await taskService.getAllTask();
     return res.json(data);
 };
 
-export const getTaskById = (req: Request, res: Response) => {
-    //const taskId: number = parseInt(req.params.id, 10);
-
-    const data = taskService.getTaskById(req.params.id);
+export const getTaskById = async (req: Request, res: Response) => {
+    const data = await taskService.getTaskById(req.params.id);
+    if (!data) {
+        return res.status(404).json({ message: "Task not found" });
+    }
     return res.json(data);
 };
 
 export const createTask = async (req: Request, res: Response) => {
     const data = await taskService.createTask(req.body);
-    return res.json(data);
+    if (data.success) {
+        return res.status(201).json(data);
+    } else {
+        return res.status(400).json(data);
+    }
+};
+
+export const updateTask = async (req: Request, res: Response) => {
+    const data = await taskService.updateTask(req.params.id);
+    if (data.success) {
+        return res.status(200).json(data);
+    } else {
+        return res.status(400).json(data);
+    }
+};
+
+export const deleteTask = async (req: Request, res: Response) => {
+    const data = await taskService.deleteTask(req.params.id);
+    if (data.success) {
+        return res.status(201).json(data);
+    } else {
+        return res.status(400).json(data);
+    }
 };

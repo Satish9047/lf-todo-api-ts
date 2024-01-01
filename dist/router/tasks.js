@@ -29,5 +29,7 @@ const tasksRouter = (0, express_1.Router)();
 tasksRouter.get("/", taskController.getAllTasks);
 tasksRouter.get("/:id", taskController.getTaskById);
 tasksRouter.post("/add", taskController.createTask);
+tasksRouter.put("/update/:id", taskController.updateTask);
+tasksRouter.delete("/delete/:id", taskController.deleteTask);
 exports.default = tasksRouter;
 //# sourceMappingURL=tasks.js.map
