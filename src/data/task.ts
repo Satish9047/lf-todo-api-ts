@@ -3,7 +3,7 @@ export const tasksArray = [
         "id": "1",
         "title": "Task 1",
         "description": "This is a task 1",
-        "isCompleted": false
+        "isCompleted": true
     },
     {
         "id": "2",

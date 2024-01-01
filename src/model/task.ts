@@ -44,6 +44,14 @@ export const getCompletedTask = () => {
     return tasks;
 };
 
+
+//get incompleted
+export const getInCompletedTask = () => {
+    const tasks = tasksArray.filter((task) => {
+        return task.isCompleted === false;
+    });
+    return tasks;
+};
 //create new task
 export const createTask = (newTask: INewTask) => {
     const newTaskObj = {

@@ -4,6 +4,13 @@ import * as taskService from "../service/task";
 
 //get all tasks
 export const getAllTasks = async (req: Request, res: Response) => {
+    const query = req.query;
+    if (query) {
+        const data = await taskService.getFilterTasks(query);
+        return res.json(data);
+    }
+
+    console.log(query);
     const data = await taskService.getAllTask();
     return res.json(data);
 };

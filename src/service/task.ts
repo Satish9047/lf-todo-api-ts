@@ -1,3 +1,4 @@
+
 import * as Task from "../model/task";
 
 export interface INewTask {
@@ -5,10 +6,27 @@ export interface INewTask {
     description: string;
     isCompleted: boolean;
 }
+interface IQueryTask {
+    isCompleted?: string;
+}
 
 export const getAllTask = async () => {
     const data = Task.getAllTask();
     return data;
+};
+
+export const getFilterTasks = async (query: IQueryTask) => {
+    console.log(query.isCompleted, Boolean(query.isCompleted), typeof (query.isCompleted));
+    if (query.isCompleted === "true") {
+        const data = Task.getCompletedTask();
+        return data;
+    } else if (query.isCompleted === "false") {
+        const data = Task.getInCompletedTask();
+        return data;
+    } else {
+        const data = Task.getAllTask();
+        return data;
+    }
 };
 
 export const getTaskById = async (taskId: string) => {

@@ -3,10 +3,10 @@ import * as taskController from "../controller/tasks";
 const tasksRouter: Router = Router();
 
 tasksRouter.get("/", taskController.getAllTasks);
+//tasksRouter.get("/completed", taskController.completedTask);
 tasksRouter.get("/:id", taskController.getTaskById);
-tasksRouter.get("/completed", taskController.completedTask);
-tasksRouter.post("/add", taskController.createTask);
-tasksRouter.put("/update/:id", taskController.updateTask);
-tasksRouter.delete("/delete/:id", taskController.deleteTask);
+tasksRouter.post("/", taskController.createTask);
+tasksRouter.put("/:id", taskController.updateTask);
+tasksRouter.delete("/:id", taskController.deleteTask);
 
 export default tasksRouter;
