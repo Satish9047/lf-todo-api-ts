@@ -1,27 +1,26 @@
-export const users = [
-    {
-        id: 1,
-        name: "User 1",
-        email: "user1@test.com",
-        password: "$2b$10$W./GL4g9fKuIyLYzH6BsQe7LzvX2l.uEcintM5LyhQN4miHPfHlwa",
-    },
-    {
-        id: 2,
-        name: "User 2",
-        email: "user2@test.com",
-        password: "$2b$10$sPJYyf75p6V/GPfxBhmNL.vqIlY.o65IYk4CWfpXQWnoW8AIffCEe",
-    },
-    {
-        id: 3,
-        name: "User 3",
-        email: "user3@test.com",
-        password: "$2b$10$tW.NR6oPKAIa6BPRX5fs0eM7Py4rxUbVOysRafdxWp4MULE9wvjVW",
-    },
-];
+
+import bcrypt from "bcrypt";
+import { IloginCredential } from "../service/user";
+import { IregisterCredential } from "../service/user";
+import { usersArray } from "../data/user";
+import { IUsersArray } from "../interface/user";
+import fs from "fs";
+
+const saltRounds = 10;
+
+const usersArrayFilePath = "./src/data/user.ts"; // Adjust the path as needed
 
 
-export const getAllUsers = () =>{
-    const userData = users.map((user)=>{
+const writeUsersToFile = (updatedUsers: IUsersArray[]) => {
+    try {
+        fs.writeFileSync(usersArrayFilePath, `export const usersArray = ${JSON.stringify(updatedUsers, null, 4)};`, "utf-8");
+    } catch (error) {
+        console.error("Error writing users array file:", error);
+    }
+};
+
+export const getAllUsers = () => {
+    const userData = usersArray.map((user) => {
         return {
             id: user.id,
             name: user.name,
@@ -31,10 +30,46 @@ export const getAllUsers = () =>{
     return userData;
 };
 
-export const getLogin = (credential:any)=>{
-    if(!credential) return "Empty credentials";
-    const user = users.find((user)=>{
-        return user.email === credential.email && user.password === credential.password;
+export const getRegister = async (credential: IregisterCredential) => {
+    if (!credential) return { success: false, message: "Empty credentials" };
+
+    try {
+        // Hash the password with the generated salt
+        const hashedPassword = await bcrypt.hash(credential.password, saltRounds);
+
+        // Create a new user object with the hashed password
+        const newUser: IUsersArray = {
+            id: usersArray.length + 1,
+            name: credential.name,
+            email: credential.email,
+            password: hashedPassword,
+        };
+
+        // Add the new user to the users array
+        usersArray.push(newUser);
+
+        // Write the updated users array back to the file
+        writeUsersToFile(usersArray);
+
+        return { success: true, user: newUser };
+    } catch (error) {
+        console.error("Error during registration:", error);
+        return { success: false, message: "Registration failed", details: `${error}` };
+    }
+};
+
+export const getLogin = async (credential: IloginCredential) => {
+    if (!credential) return { success: false, message: "Empty credentials" };
+
+    // Finding the user by email
+    const user = usersArray.find((user) => {
+        return user.email === credential.email;
     });
-    if(!user) return "Invalid credentials";
+
+    // Check if user exists and verify the hashed password
+    if (user && (await bcrypt.compare(credential.password, user.password))) {
+        return { success: true, message: "Login successful" };
+    } else {
+        return { success: false, message: "Login unsuccessful" };
+    }
 };

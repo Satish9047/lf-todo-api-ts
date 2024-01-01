@@ -23,12 +23,23 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAllUsers = void 0;
+exports.getRegister = exports.getLogin = exports.getAllUsers = void 0;
 const userService = __importStar(require("../service/user"));
 const getAllUsers = (req, res) => {
-    console.log("hello from controller");
+    //console.log("hello from controller");
     const data = userService.getAllUser();
     return res.json(data);
 };
 exports.getAllUsers = getAllUsers;
+const getLogin = (req, res) => {
+    const data = userService.getLogin(req.body);
+    return res.json(data);
+};
+exports.getLogin = getLogin;
+const getRegister = (req, res) => {
+    // console.log(req.body);
+    const data = userService.getRegister(req.body);
+    return res.json(data);
+};
+exports.getRegister = getRegister;
 //# sourceMappingURL=user.js.map

@@ -27,5 +27,7 @@ const express_1 = require("express");
 const userRouter = (0, express_1.Router)();
 const userController = __importStar(require("../controller/user"));
 userRouter.get("/", userController.getAllUsers);
+userRouter.post("/login", userController.getLogin);
+userRouter.post("/register", userController.getRegister);
 exports.default = userRouter;
 //# sourceMappingURL=user.js.map
