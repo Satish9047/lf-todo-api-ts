@@ -13,3 +13,10 @@ export const getAllTask = () => {
     });
     return taskdata;
 };
+
+export const getTaskById = (taskId: number) => {
+    const task = tasksArray.find((task) => {
+        return task.id === taskId;
+    });
+    return task;
+};

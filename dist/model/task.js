@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAllTask = void 0;
+exports.getTaskById = exports.getAllTask = void 0;
 //import fs from "fs";
 const task_1 = require("../data/task");
 // import { ITasksArray } from "../interface/task";
@@ -16,4 +16,11 @@ const getAllTask = () => {
     return taskdata;
 };
 exports.getAllTask = getAllTask;
+const getTaskById = (taskId) => {
+    const task = task_1.tasksArray.find((task) => {
+        return task.id === taskId;
+    });
+    return task;
+};
+exports.getTaskById = getTaskById;
 //# sourceMappingURL=task.js.map

@@ -5,3 +5,10 @@ export const getAllTasks = (req: Request, res: Response) => {
     const data = taskService.getAllTask();
     return res.json(data);
 };
+
+export const getTaskById = (req: Request, res: Response) => {
+    const taskId: number = parseInt(req.params.id, 10);
+
+    const data = taskService.getTaskById(taskId);
+    return res.json(data);
+};
