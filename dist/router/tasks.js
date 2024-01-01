@@ -28,5 +28,6 @@ const taskController = __importStar(require("../controller/tasks"));
 const tasksRouter = (0, express_1.Router)();
 tasksRouter.get("/", taskController.getAllTasks);
 tasksRouter.get("/:id", taskController.getTaskById);
+tasksRouter.post("/add", taskController.createTask);
 exports.default = tasksRouter;
 //# sourceMappingURL=tasks.js.map

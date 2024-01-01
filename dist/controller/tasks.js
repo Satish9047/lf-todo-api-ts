@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getTaskById = exports.getAllTasks = void 0;
+exports.createTask = exports.getTaskById = exports.getAllTasks = void 0;
 const taskService = __importStar(require("../service/task"));
 const getAllTasks = (req, res) => {
     const data = taskService.getAllTask();
@@ -31,10 +31,14 @@ const getAllTasks = (req, res) => {
 };
 exports.getAllTasks = getAllTasks;
 const getTaskById = (req, res) => {
-    console.log(req.params.id);
-    res.json({ mes: "hello from controller task" });
-    // const data = taskService.getTaskById(req.params.id: number);
-    // return res.json(data);
+    //const taskId: number = parseInt(req.params.id, 10);
+    const data = taskService.getTaskById(req.params.id);
+    return res.json(data);
 };
 exports.getTaskById = getTaskById;
+const createTask = async (req, res) => {
+    const data = await taskService.createTask(req.body);
+    return res.json(data);
+};
+exports.createTask = createTask;
 //# sourceMappingURL=tasks.js.map

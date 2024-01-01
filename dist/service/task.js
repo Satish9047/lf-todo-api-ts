@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getTaskById = exports.getAllTask = void 0;
+exports.createTask = exports.getTaskById = exports.getAllTask = void 0;
 const Task = __importStar(require("../model/task"));
 const getAllTask = () => {
     const data = Task.getAllTask();
@@ -35,4 +35,9 @@ const getTaskById = (taskId) => {
     return data;
 };
 exports.getTaskById = getTaskById;
+const createTask = (newTask) => {
+    const data = Task.createTask(newTask);
+    return data;
+};
+exports.createTask = createTask;
 //# sourceMappingURL=task.js.map
