@@ -1,13 +1,12 @@
 
+import fs from "fs";
 import bcrypt from "bcrypt";
 import { IloginCredential } from "../service/user";
 import { IregisterCredential } from "../service/user";
 import { usersArray } from "../data/user";
 import { IUsersArray } from "../interface/user";
-import fs from "fs";
 
 const saltRounds = 10;
-
 const usersArrayFilePath = "./src/data/user.ts";
 
 
@@ -45,11 +44,8 @@ export const getRegister = async (credential: IregisterCredential) => {
             password: hashedPassword,
         };
 
-        // Add the new user to the users array
-        usersArray.push(newUser);
-
-        // Write the updated users array back to the file
-        writeUsersToFile(usersArray);
+        usersArray.push(newUser); // Add the new user to the users array
+        writeUsersToFile(usersArray); // Write the updated users array back to the file
 
         return { success: true, message: "Register Successful" };
     } catch (error) {

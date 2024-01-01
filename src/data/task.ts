@@ -1,11 +1,4 @@
-interface ITaskArray {
-    id: number;
-    title: string;
-    description: string;
-    isCompleted: boolean;
-}
-
-const taskArray:ITaskArray[] = [
+export const tasksArray = [
     {
         id: 1,
         title: "Task 1",
@@ -19,5 +12,3 @@ const taskArray:ITaskArray[] = [
         isCompleted: false
     }
 ];
-
-export default taskArray;

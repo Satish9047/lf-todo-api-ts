@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
+import * as taskService from "../service/task";
 
-export const userController = (req:Request, res:Response)=>{
-    res.send("you get the user");
+export const getAllTasks = (req: Request, res: Response) => {
+    const data = taskService.getAllTask();
+    return res.json(data);
 };
