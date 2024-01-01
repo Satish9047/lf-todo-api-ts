@@ -53,9 +53,9 @@ export const getLogin = async (credential: IloginCredential) => {
 
     // Check if user exists and verify the hashed password
     if (user && (await bcrypt.compare(credential.password, user.password))) {
-        const jwtToken = jwt.sign({ data: user.email }, config.jwtSecret, { expiresIn: config.accessTokenExpiry });
-        const refreshToken = jwt.sign({ data: user.email }, config.jwtSecret, { expiresIn: config.refreshTokenExpiry });
-        return { success: true, message: "Login successful", accesstoken: jwtToken, refreshToken: refreshToken };
+        const accessToken = jwt.sign({ data: user.email, tokenType: "access" }, config.jwtSecret, { expiresIn: config.accessTokenExpiry });
+        const refreshToken = jwt.sign({ data: user.email, tokenType: "refresh" }, config.jwtSecret, { expiresIn: config.refreshTokenExpiry });
+        return { success: true, message: "Login successful", accessToken: accessToken, refreshToken: refreshToken };
     } else {
         return { success: false, message: "Login unsuccessful" };
     }
@@ -67,8 +67,9 @@ export const getRefreshToken = async (accessToken: string) => {
     if (token) {
         try {
             const payload = jwt.verify(token, config.jwtSecret) as JwtPayload;
-            const accessToken = jwt.sign({ data: payload.data }, config.jwtSecret, { expiresIn: config.accessTokenExpiry });
-            return { accesstoken: accessToken };
+            if (payload.tokeType !== "refresh") throw new Error("invalid token");
+            const accessToken = jwt.sign({ data: payload.data, tokenType: "access" }, config.jwtSecret, { expiresIn: config.accessTokenExpiry });
+            return { accessToken: accessToken };
         } catch (error) {
             return { msg: (error as Error).message };
         }
