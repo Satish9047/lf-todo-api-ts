@@ -24,9 +24,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getAllUser = void 0;
-const getUser = __importStar(require("../model/user"));
+const User = __importStar(require("../model/user"));
 const getAllUser = () => {
-    const data = getUser.getAllUsers();
+    const data = User.getAllUsers();
     return data;
 };
 exports.getAllUser = getAllUser;
