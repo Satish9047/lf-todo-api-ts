@@ -4,9 +4,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getLogin = exports.getRegister = exports.getAllUsers = void 0;
+const fs_1 = __importDefault(require("fs"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const user_1 = require("../data/user");
-const fs_1 = __importDefault(require("fs"));
 const saltRounds = 10;
 const usersArrayFilePath = "./src/data/user.ts";
 const writeUsersToFile = (updatedUsers) => {
@@ -41,14 +41,12 @@ const getRegister = async (credential) => {
             email: credential.email,
             password: hashedPassword,
         };
-        // Add the new user to the users array
-        user_1.usersArray.push(newUser);
-        // Write the updated users array back to the file
-        await writeUsersToFile(user_1.usersArray);
-        return { success: true, user: newUser };
+        user_1.usersArray.push(newUser); // Add the new user to the users array
+        writeUsersToFile(user_1.usersArray); // Write the updated users array back to the file
+        return { success: true, message: "Register Successful" };
     }
     catch (error) {
-        console.error("Error during registration:", error);
+        //console.error("Error during registration:", error);
         return { success: false, message: "Registration failed", details: `${error}` };
     }
 };

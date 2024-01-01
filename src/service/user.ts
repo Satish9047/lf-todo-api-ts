@@ -22,14 +22,19 @@ export const getRegister = async (credential: IregisterCredential) => {
         console.log(data, "from the return service/user");
         return data;
     } catch (error) {
-        console.error("Error in getRegister:", error);
+        console.error("Error in Register:", error);
         return { success: false, message: "Internal server error" };
     }
 };
 
-export const getLogin = (credential: IloginCredential) => {
-    const data = User.getLogin(credential);
-    return data;
+export const getLogin = async (credential: IloginCredential) => {
+    try {
+        const data = await User.getLogin(credential);
+        return data;
+    } catch (error) {
+        console.error("Error in login:", error);
+        return { success: false, message: "Internal server error" };
+    }
 };
 
 

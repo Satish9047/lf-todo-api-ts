@@ -30,15 +30,27 @@ const getAllUser = () => {
     return data;
 };
 exports.getAllUser = getAllUser;
-const getRegister = (credential) => {
-    //console.log(credential, "from service user");
-    const data = User.getRegister(credential);
-    return data;
+const getRegister = async (credential) => {
+    try {
+        const data = await User.getRegister(credential);
+        console.log(data, "from the return service/user");
+        return data;
+    }
+    catch (error) {
+        console.error("Error in Register:", error);
+        return { success: false, message: "Internal server error" };
+    }
 };
 exports.getRegister = getRegister;
-const getLogin = (credential) => {
-    const data = User.getLogin(credential);
-    return data;
+const getLogin = async (credential) => {
+    try {
+        const data = await User.getLogin(credential);
+        return data;
+    }
+    catch (error) {
+        console.error("Error in login:", error);
+        return { success: false, message: "Internal server error" };
+    }
 };
 exports.getLogin = getLogin;
 //# sourceMappingURL=user.js.map

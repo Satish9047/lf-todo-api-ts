@@ -8,8 +8,9 @@ export const getAllUsers = (req: Request, res: Response) => {
     return res.json(data);
 };
 
-export const getLogin = (req: Request, res: Response) => {
-    const data = userService.getLogin(req.body);
+export const getLogin = async (req: Request, res: Response) => {
+    const data = await userService.getLogin(req.body);
+    console.log(data, "getting return, from controller/user");
     return res.json(data);
 };
 

@@ -1,0 +1,1 @@
+{"version":3,"file":"task.js","sourceRoot":"","sources":["../../src/data/task.ts"],"names":[],"mappings":";;;AAAa,QAAA,UAAU,GAAG;IACtB;QACI,EAAE,EAAE,CAAC;QACL,KAAK,EAAE,QAAQ;QACf,WAAW,EAAE,kBAAkB;QAC/B,WAAW,EAAE,KAAK;KACrB;IACD;QACI,EAAE,EAAE,CAAC;QACL,KAAK,EAAE,QAAQ;QACf,WAAW,EAAE,kBAAkB;QAC/B,WAAW,EAAE,KAAK;KACrB;CACJ,CAAC"}
