@@ -28,9 +28,8 @@ const taskController = __importStar(require("../controller/tasks"));
 const tasksRouter = (0, express_1.Router)();
 tasksRouter.get("/", taskController.getAllTasks);
 tasksRouter.get("/:id", taskController.getTaskById);
-tasksRouter.get("/completed", taskController.completedTask);
-tasksRouter.post("/add", taskController.createTask);
-tasksRouter.put("/update/:id", taskController.updateTask);
-tasksRouter.delete("/delete/:id", taskController.deleteTask);
+tasksRouter.post("/", taskController.createTask);
+tasksRouter.put("/:id", taskController.updateTask);
+tasksRouter.delete("/:id", taskController.deleteTask);
 exports.default = tasksRouter;
 //# sourceMappingURL=tasks.js.map

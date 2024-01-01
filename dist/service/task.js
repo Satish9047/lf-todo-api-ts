@@ -23,13 +23,29 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteTask = exports.updateTask = exports.createTask = exports.completedTask = exports.getTaskById = exports.getAllTask = void 0;
+exports.deleteTask = exports.updateTask = exports.createTask = exports.completedTask = exports.getTaskById = exports.getFilterTasks = exports.getAllTask = void 0;
 const Task = __importStar(require("../model/task"));
 const getAllTask = async () => {
     const data = Task.getAllTask();
     return data;
 };
 exports.getAllTask = getAllTask;
+const getFilterTasks = async (query) => {
+    console.log(query.isCompleted, Boolean(query.isCompleted), typeof (query.isCompleted));
+    if (query.isCompleted === "true") {
+        const data = Task.getCompletedTask();
+        return data;
+    }
+    else if (query.isCompleted === "false") {
+        const data = Task.getInCompletedTask();
+        return data;
+    }
+    else {
+        const data = Task.getAllTask();
+        return data;
+    }
+};
+exports.getFilterTasks = getFilterTasks;
 const getTaskById = async (taskId) => {
     const data = Task.getTaskById(taskId);
     return data;

@@ -3,7 +3,6 @@ import * as taskController from "../controller/tasks";
 const tasksRouter: Router = Router();
 
 tasksRouter.get("/", taskController.getAllTasks);
-//tasksRouter.get("/completed", taskController.completedTask);
 tasksRouter.get("/:id", taskController.getTaskById);
 tasksRouter.post("/", taskController.createTask);
 tasksRouter.put("/:id", taskController.updateTask);

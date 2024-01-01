@@ -23,34 +23,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getLogin = exports.getRegister = exports.getAllUser = void 0;
+exports.getAllUser = void 0;
 const User = __importStar(require("../model/user"));
 const getAllUser = () => {
     const data = User.getAllUsers();
     return data;
 };
 exports.getAllUser = getAllUser;
-const getRegister = async (credential) => {
-    try {
-        const data = await User.getRegister(credential);
-        console.log(data, "from the return service/user");
-        return data;
-    }
-    catch (error) {
-        console.error("Error in Register:", error);
-        return { success: false, message: "Internal server error" };
-    }
-};
-exports.getRegister = getRegister;
-const getLogin = async (credential) => {
-    try {
-        const data = await User.getLogin(credential);
-        return data;
-    }
-    catch (error) {
-        console.error("Error in login:", error);
-        return { success: false, message: "Internal server error" };
-    }
-};
-exports.getLogin = getLogin;
 //# sourceMappingURL=user.js.map

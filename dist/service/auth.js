@@ -23,23 +23,40 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getRefreshToken = exports.handleRegister = exports.handleLogin = void 0;
-const authService = __importStar(require("../service/auth"));
-const handleLogin = async (req, res) => {
-    const data = await authService.getLogin(req.body);
-    console.log(data, "getting return, from controller/user");
-    return res.json(data);
+exports.getRefreshToken = exports.getLogin = exports.getRegister = void 0;
+const Auth = __importStar(require("../model/auth"));
+const getRegister = async (credential) => {
+    try {
+        const data = await Auth.getRegister(credential);
+        console.log(data, "from the return service/user");
+        return data;
+    }
+    catch (error) {
+        console.error("Error in Register:", error);
+        return { success: false, message: "Internal server error" };
+    }
 };
-exports.handleLogin = handleLogin;
-const handleRegister = async (req, res) => {
-    const data = await authService.getRegister(req.body);
-    console.log(data, "getting return, from controller/user");
-    return res.json(data);
+exports.getRegister = getRegister;
+const getLogin = async (credential) => {
+    try {
+        const data = await Auth.getLogin(credential);
+        return data;
+    }
+    catch (error) {
+        console.error("Error in login:", error);
+        return { success: false, message: "Internal server error" };
+    }
 };
-exports.handleRegister = handleRegister;
-const getRefreshToken = async (req, res) => {
-    const data = await authService.getRefreshToken(req.headers.authorization);
-    return res.json(data);
+exports.getLogin = getLogin;
+const getRefreshToken = async (accessToken) => {
+    try {
+        const data = await Auth.getRefreshToken(accessToken);
+        return data;
+    }
+    catch (error) {
+        console.error("Error in token: ", error);
+        return { success: false, message: "Internal server error" };
+    }
 };
 exports.getRefreshToken = getRefreshToken;
 //# sourceMappingURL=auth.js.map

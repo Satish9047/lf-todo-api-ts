@@ -23,25 +23,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getRegister = exports.getLogin = exports.getAllUsers = void 0;
+exports.getAllUsers = void 0;
 const userService = __importStar(require("../service/user"));
 const getAllUsers = (req, res) => {
-    //console.log("hello from controller");
     const data = userService.getAllUser();
     return res.json(data);
 };
 exports.getAllUsers = getAllUsers;
-const getLogin = async (req, res) => {
-    const data = await userService.getLogin(req.body);
-    console.log(data, "getting return, from controller/user");
-    return res.json(data);
-};
-exports.getLogin = getLogin;
-const getRegister = async (req, res) => {
-    // console.log(req.body);
-    const data = await userService.getRegister(req.body);
-    console.log(data, "getting return, from controller/user");
-    return res.json(data);
-};
-exports.getRegister = getRegister;
 //# sourceMappingURL=user.js.map
