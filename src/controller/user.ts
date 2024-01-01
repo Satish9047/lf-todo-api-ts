@@ -13,9 +13,10 @@ export const getLogin = (req: Request, res: Response) => {
     return res.json(data);
 };
 
-export const getRegister = (req: Request, res: Response) => {
+export const getRegister = async (req: Request, res: Response) => {
     // console.log(req.body);
-    const data = userService.getRegister(req.body);
+    const data = await userService.getRegister(req.body);
+    console.log(data, "getting return, from controller/user");
     return res.json(data);
 };
 

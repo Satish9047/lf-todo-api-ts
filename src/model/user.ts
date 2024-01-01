@@ -8,7 +8,7 @@ import fs from "fs";
 
 const saltRounds = 10;
 
-const usersArrayFilePath = "./src/data/user.ts"; // Adjust the path as needed
+const usersArrayFilePath = "./src/data/user.ts";
 
 
 const writeUsersToFile = (updatedUsers: IUsersArray[]) => {
@@ -51,9 +51,9 @@ export const getRegister = async (credential: IregisterCredential) => {
         // Write the updated users array back to the file
         writeUsersToFile(usersArray);
 
-        return { success: true, user: newUser };
+        return { success: true, message: "Register Successful" };
     } catch (error) {
-        console.error("Error during registration:", error);
+        //console.error("Error during registration:", error);
         return { success: false, message: "Registration failed", details: `${error}` };
     }
 };

@@ -7,8 +7,20 @@ export const usersArray = [
     },
     {
         "id": 2,
-        "name": "client1",
-        "email": "client1234@gmail.com",
-        "password": "$2b$10$epjhtzQa77.zq.neBzjPV.jSUyiIMJHgHv0uTDUulVk2FlAM9.b9G"
+        "name": "client4",
+        "email": "client12345@gmail.com",
+        "password": "$2b$10$76zFcqJmGQ06U1e2IDv9a.TuHt4qFcRc0.MkHb5gQDHUV0ZazMPtu"
+    },
+    {
+        "id": 3,
+        "name": "satish",
+        "email": "satish@gmail.com",
+        "password": "$2b$10$xw45CdNFpNTTT642yMdSB.meUY16Y8OCaJjD7WujQWuCb6mITHp.m"
+    },
+    {
+        "id": 4,
+        "name": "satish123",
+        "email": "satish123@gmail.com",
+        "password": "$2b$10$1183cx4i7363t67QhSFCK.MXDnbNjmsgNJlkzHrfFb4ptU8..Scu6"
     }
 ];

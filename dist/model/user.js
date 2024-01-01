@@ -8,10 +8,10 @@ const bcrypt_1 = __importDefault(require("bcrypt"));
 const user_1 = require("../data/user");
 const fs_1 = __importDefault(require("fs"));
 const saltRounds = 10;
-const usersArrayFilePath = "./src/data/user.ts"; // Adjust the path as needed
+const usersArrayFilePath = "./src/data/user.ts";
 const writeUsersToFile = (updatedUsers) => {
     try {
-        fs_1.default.writeFileSync(usersArrayFilePath, `export const usersArray = ${JSON.stringify(updatedUsers, null, 2)};`, "utf-8");
+        fs_1.default.writeFileSync(usersArrayFilePath, `export const usersArray = ${JSON.stringify(updatedUsers, null, 4)};`, "utf-8");
     }
     catch (error) {
         console.error("Error writing users array file:", error);
@@ -44,7 +44,7 @@ const getRegister = async (credential) => {
         // Add the new user to the users array
         user_1.usersArray.push(newUser);
         // Write the updated users array back to the file
-        writeUsersToFile(user_1.usersArray);
+        await writeUsersToFile(user_1.usersArray);
         return { success: true, user: newUser };
     }
     catch (error) {
