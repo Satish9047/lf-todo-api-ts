@@ -1,17 +1,19 @@
 import express from "express";
 import router from "./router/index.js";
 import cors from "cors";
-import config from "./config.js";
-import morgan from "morgan";
-
+import config from "./config";
 
 const app = express();
 
 //middleware
 app.use(cors());
-app.use(morgan("common"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use((req, res, next) => {
+    console.log(req.method, req.path);
+    next();
+});
 
 //route handlers
 app.use("/", router);

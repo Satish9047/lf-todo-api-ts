@@ -1,8 +1,12 @@
-import { Router} from "express";
-import { tasksController } from "../controller/tasks.js";
-
+import { Router } from "express";
+import * as taskController from "../controller/tasks";
 const tasksRouter: Router = Router();
 
-tasksRouter.get("/tasks", tasksController);
+//task route handler
+tasksRouter.get("/", taskController.getAllTasks);
+tasksRouter.get("/:id", taskController.getTaskById);
+tasksRouter.post("/", taskController.createTask);
+tasksRouter.put("/:id", taskController.updateTask);
+tasksRouter.delete("/:id", taskController.deleteTask);
 
 export default tasksRouter;

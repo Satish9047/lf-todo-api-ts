@@ -1,17 +1,12 @@
-import { Router } from "express";
-import tasksRouter from "./tasks.js";
-import userRouter from "./user.js";
-import config from "../config.js";
+import express from "express";
+import tasksRouter from "./tasks";
+import userRouter from "./user";
+import authRouter from "./auth";
+const router = express.Router();
 
-const router = Router();
-
-
+//route handlers
 router.use("/tasks", tasksRouter);
-router.use("/user", userRouter);
-
-router.get("/", (req, res) => {
-    res.json({ message: `Server is running on port ${config.serverPort}` });
-});
-
+router.use("/users", userRouter);
+router.use("/auth", authRouter);
 export default router;
 
