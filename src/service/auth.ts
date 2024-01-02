@@ -1,4 +1,5 @@
 import * as Auth from "../model/auth";
+
 export interface IregisterCredential {
     name: string;
     email: string;
@@ -10,6 +11,7 @@ export interface IloginCredential {
     password: string;
 }
 
+//get register service
 export const getRegister = async (credential: IregisterCredential) => {
     try {
         const data = await Auth.getRegister(credential);
@@ -21,6 +23,7 @@ export const getRegister = async (credential: IregisterCredential) => {
     }
 };
 
+//login service
 export const getLogin = async (credential: IloginCredential) => {
     try {
         const data = await Auth.getLogin(credential);
@@ -31,6 +34,7 @@ export const getLogin = async (credential: IloginCredential) => {
     }
 };
 
+//refresh token service
 export const getRefreshToken = async (accessToken: string) => {
     try {
         const data = await Auth.getRefreshToken(accessToken);

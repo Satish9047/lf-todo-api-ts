@@ -5,7 +5,11 @@ import { ITasksArray } from "../interface/task";
 
 const taskArrayFilePath = "./src/data/task.ts";
 
-//saving the task in a file
+/**
+ * save the task in the array of tasks
+ * 
+ * @param updateTask Array of tasks
+ */
 const writeTaskToFile = (updateTask: ITasksArray[]) => {
     try {
         fs.writeFileSync(taskArrayFilePath, `export const tasksArray = ${JSON.stringify(updateTask, null, 4)};`, "utf-8");
@@ -52,6 +56,15 @@ export const getInCompletedTask = () => {
     });
     return tasks;
 };
+
+//search task
+export const searchTask = (searchtaskName: string) => {
+    const task = tasksArray.filter((task) => {
+        return task.title.toLowerCase().includes(searchtaskName.toLowerCase());
+    });
+    return task;
+};
+
 //create new task
 export const createTask = (newTask: INewTask) => {
     const newTaskObj = {

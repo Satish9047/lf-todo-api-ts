@@ -1,5 +1,6 @@
 import { usersArray } from "../data/user";
 
+//get all users
 export const getAllUsers = () => {
     const userData = usersArray.map((user) => {
         return {

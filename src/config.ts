@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 
+//configure
 const config = {
     serverPort: process.env.PORT,
     accessTokenExpiry: process.env.ACCESS_TOKEN_EXPIRY,

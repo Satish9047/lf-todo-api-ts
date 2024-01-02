@@ -10,6 +10,11 @@ import { IUsersArray } from "../interface/user";
 const saltRounds = 10;
 const usersArrayFilePath = "./src/data/user.ts";
 
+/**
+ * register the user in the file
+ * 
+ * @param updatedUsers Array of updated users
+ */
 const writeUsersToFile = (updatedUsers: IUsersArray[]) => {
     try {
         fs.writeFileSync(usersArrayFilePath, `export const usersArray = ${JSON.stringify(updatedUsers, null, 4)};`, "utf-8");
@@ -18,6 +23,8 @@ const writeUsersToFile = (updatedUsers: IUsersArray[]) => {
     }
 };
 
+
+//handle register request
 export const getRegister = async (credential: IregisterCredential) => {
     if (!credential) return { success: false, message: "Empty credentials" };
 
@@ -43,6 +50,8 @@ export const getRegister = async (credential: IregisterCredential) => {
     }
 };
 
+
+//handle login request
 export const getLogin = async (credential: IloginCredential) => {
     if (!credential) return { success: false, message: "Empty credentials" };
 
@@ -61,8 +70,9 @@ export const getLogin = async (credential: IloginCredential) => {
     }
 };
 
-export const getRefreshToken = async (accessToken: string) => {
 
+//handle refresh token request
+export const getRefreshToken = async (accessToken: string) => {
     const token = accessToken?.split(" ")?.[1];
     if (token) {
         try {
