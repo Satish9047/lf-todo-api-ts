@@ -22,5 +22,11 @@ export const tasksArray = [
         "title": "Task 6",
         "description": "This is a task 6",
         "isCompleted": false
+    },
+    {
+        "id": "lqw5wrlc_s",
+        "title": "Task 8",
+        "description": "This is a task 8",
+        "isCompleted": false
     }
 ];
