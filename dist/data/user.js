@@ -31,6 +31,12 @@ exports.usersArray = [
         "name": "satish1234",
         "email": "satish1234@gmail.com",
         "password": "$2b$10$kGrmLTP.cdmnT2WXN.3XzuIPf2gfSbajQ2DQJhZczRc8GyJ03kgZO"
+    },
+    {
+        "id": 6,
+        "name": "satish12346",
+        "email": "satish123456@gmail.com",
+        "password": "$2b$10$8DZ7zk5yDwZRVSIb8UMr4O10kc8NrnaGGGK0L8RexClldmrQCZDb."
     }
 ];
 //# sourceMappingURL=user.js.map
