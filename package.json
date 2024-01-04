@@ -26,6 +26,7 @@
     "@typescript-eslint/parser": "^6.16.0",
     "eslint": "^8.56.0",
     "joi": "^17.11.0",
+    "prisma": "^5.7.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },
